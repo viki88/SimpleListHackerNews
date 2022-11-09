@@ -8,13 +8,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vikination.simplehackernewslist.R
 import com.vikination.simplehackernewslist.databinding.ItemStoryBinding
 import com.vikination.simplehackernewslist.models.NewsDetail
+import com.vikination.simplehackernewslist.ui.main.StoryItemClickListener
 
-class StoryListAdapter : ListAdapter<NewsDetail, StoryListAdapter.StoryListViewHolder>(DIFF_CALLBACK) {
+class StoryListAdapter(var storyItemClickListener: StoryItemClickListener) : ListAdapter<NewsDetail, StoryListAdapter.StoryListViewHolder>(DIFF_CALLBACK) {
 
     inner class StoryListViewHolder(private val itemBinding :ItemStoryBinding) :RecyclerView.ViewHolder(itemBinding.root){
         fun bind(newsDetail: NewsDetail){
             itemBinding.tvTitle.text = newsDetail.title
             itemBinding.tvBy.text = String.format(itemBinding.root.context.resources.getString(R.string.by_template), newsDetail.by)
+            itemBinding.root.setOnClickListener { storyItemClickListener.onStoryItemClick(newsDetail) }
         }
     }
 
