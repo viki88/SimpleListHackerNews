@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SimpleHackerNewsList</string>
+    <string name="app_name">Hacker News</string>
     <string name="load_more">load more</string>
 
     <string name="by_template">by %1$s</string>

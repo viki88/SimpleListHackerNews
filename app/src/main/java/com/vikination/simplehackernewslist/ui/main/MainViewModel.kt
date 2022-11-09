@@ -12,15 +12,15 @@ import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(var mainRepository: MainRepository) :ViewModel() {
+class MainViewModel @Inject constructor(private var mainRepository: MainRepository) :ViewModel() {
 
     private val topStoriesIdLiveData = MutableLiveData<List<Int>>()
     private val newsDetailsLiveData = MutableLiveData<ArrayList<NewsDetail>>()
     private val newsDetails = arrayListOf<NewsDetail>()
     private var listNewsId = listOf<Int>()
     private val loadingProgressLiveData = MutableLiveData<Boolean>()
-    var currentPage = 0
-    var countPerPage = 20
+    private var currentPage = 0
+    private var countPerPage = 20
 
     fun loadAllTopStories() = viewModelScope.launch(Dispatchers.IO) {
         listNewsId = mainRepository.getTopStories()

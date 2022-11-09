@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity"
-    android:paddingVertical="16dp">
+    tools:context=".ui.main.MainActivity">
 
     <Button
         android:id="@+id/button_load_more"
@@ -15,7 +14,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_story_list"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/button_load_more"
         tools:listitem="@layout/item_story"
-        android:layout_marginHorizontal="4dp"/>
+        android:padding="4dp"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

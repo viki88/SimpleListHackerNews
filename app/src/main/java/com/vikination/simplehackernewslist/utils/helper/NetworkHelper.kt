@@ -12,5 +12,5 @@ object NetworkHelper {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun getApiService() = getRetrofit().create(ApiService::class.java)
+    fun getApiService(): ApiService = getRetrofit().create(ApiService::class.java)
 }

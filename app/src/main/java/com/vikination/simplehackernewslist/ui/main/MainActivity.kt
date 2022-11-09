@@ -1,11 +1,10 @@
 package com.vikination.simplehackernewslist.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vikination.simplehackernewslist.databinding.ActivityMainBinding
 import com.vikination.simplehackernewslist.models.NewsDetail
@@ -16,10 +15,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), StoryItemClickListener {
 
-    lateinit var binding :ActivityMainBinding
+    private lateinit var binding :ActivityMainBinding
 
     private val mainViewModel by viewModels<MainViewModel>()
-    lateinit var adapter: StoryListAdapter
+    private lateinit var adapter: StoryListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity(), StoryItemClickListener {
 
         mainViewModel.observeNewsDetailsLiveData().observe(this){
             if (mainViewModel.allDataLoadedCount() == it.size) adapter.submitList(it.toList())
+            binding.buttonLoadMore.visibility = if (mainViewModel.getListIdSize() == it.size) View.GONE else View.VISIBLE
         }
 
         mainViewModel.observeTopStoriesLiveData().observe(this){
