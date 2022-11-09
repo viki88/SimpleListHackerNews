@@ -9,7 +9,7 @@ import com.vikination.simplehackernewslist.models.NewsDetail
 
 class DetailStoryActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityDetailStoryBinding
+    private lateinit var binding : ActivityDetailStoryBinding
     private var newsDetail :NewsDetail? = null
 
     @SuppressLint("SetJavaScriptEnabled")
